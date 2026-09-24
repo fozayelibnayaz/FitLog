@@ -1,26 +1,32 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* daisyui in our colors, not its default candy colors */
+@plugin "daisyui/theme" {
+  name: "fitlog";
+  default: true;
+  color-scheme: dark;
+  --color-base-100: #0d0f12;
+  --color-base-200: #15181d;
+  --color-base-300: #272b31;
+  --color-base-content: #ffffff;
+  --color-primary: #d6f926;
+  --color-primary-content: #0d0f12;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* whole palette + fonts in one place, recolor here not everywhere */
+@theme {
+  --color-night: #0d0f12;
+  --color-panel: #15181d;
+  --color-edge: #272b31;
+  --color-fog: #9aa3ad;
+  --color-accent: #d6f926;
+  /* these two point at the next/font variables from layout.js */
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* dark gym vibes globally, no white flash on load */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-night font-body text-white antialiased;
 }
