@@ -1,9 +1,14 @@
 import { Inter, Oswald } from "next/font/google";
 import Providers from "@/components/Providers";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
-// next/font downloads these at build time and hands us css variables
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
 const oswald = Oswald({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
@@ -18,9 +23,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
+    <html
+  lang="en"
+  suppressHydrationWarning
+  className={`${inter.variable} ${oswald.variable}`}
+>
       <body className="bg-night text-white antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );

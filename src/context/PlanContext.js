@@ -3,12 +3,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-// one context to rule the plan, saved list lives here too
 const PlanContext = createContext(null);
 
 const MAX_PLAN = 5; // cap of five, dont be greedy
 
-// read localStorage safely, server render wont crash this way
 function readStore(key) {
   if (typeof window === "undefined") return [];
   try {
@@ -23,14 +21,12 @@ export function PlanProvider({ children }) {
   const [saved, setSaved] = useState([]); // ids saved for later
   const [hydrated, setHydrated] = useState(false);
 
-  // pull from localStorage once we're actually in the browser
   useEffect(() => {
     setPlan(readStore("fitlog-plan"));
     setSaved(readStore("fitlog-saved"));
     setHydrated(true);
   }, []);
 
-  // push back every time they change, but only after hydrate
   useEffect(() => {
     if (!hydrated) return;
     window.localStorage.setItem("fitlog-plan", JSON.stringify(plan));
@@ -93,7 +89,6 @@ export function PlanProvider({ children }) {
   return <PlanContext.Provider value={value}>{children}</PlanContext.Provider>;
 }
 
-// tiny hook so components just say: const { plan } = usePlan()
 export function usePlan() {
   return useContext(PlanContext);
 }

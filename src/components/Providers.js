@@ -3,7 +3,6 @@
 import { ToastContainer } from "react-toastify";
 import { PlanProvider } from "@/context/PlanContext";
 
-// wraps the whole app: plan brain + toast corner
 export default function Providers({ children }) {
   return (
     <PlanProvider>

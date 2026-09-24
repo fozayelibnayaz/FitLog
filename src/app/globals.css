@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* daisyui in our colors, not its default candy colors */
 @plugin "daisyui/theme" {
   name: "fitlog";
   default: true;
@@ -10,23 +9,31 @@
   --color-base-200: #15181d;
   --color-base-300: #272b31;
   --color-base-content: #ffffff;
-  --color-primary: #d6f926;
+  --color-primary: #ccff00;
   --color-primary-content: #0d0f12;
 }
 
-/* whole palette + fonts in one place, recolor here not everywhere */
 @theme {
   --color-night: #0d0f12;
   --color-panel: #15181d;
   --color-edge: #272b31;
   --color-fog: #9aa3ad;
-  --color-accent: #d6f926;
-  /* these two point at the next/font variables from layout.js */
+  --color-accent: #ccff00;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* dark gym vibes globally, no white flash on load */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #0d0f12;
+}
+
 body {
-  @apply bg-night font-body text-white antialiased;
+  margin: 0;
+  background: #0d0f12;
+  color: #ffffff;
+  font-family: var(--font-inter), sans-serif;
 }
