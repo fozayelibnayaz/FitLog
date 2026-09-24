@@ -18,14 +18,14 @@ export default async function Home() {
 
   return (
     <main className="bg-[#0d0f12]">
-      <section className="mx-auto max-w-[1232px] px-0 pb-20 pt-10">
-        <div className="grid min-h-[488px] overflow-hidden rounded-3xl border border-[#272b31] bg-[#15181d] lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="flex flex-col justify-center px-8 py-12 lg:px-8">
+      <section className="w-full px-5 pb-16 pt-6 sm:px-10 sm:pb-20 sm:pt-10">
+        <div className="grid overflow-hidden rounded-3xl border border-[#272b31] bg-[#15181d] lg:min-h-[488px] lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="flex flex-col justify-center px-6 py-10 sm:px-8 sm:py-12 lg:px-8">
             <p className="mb-5 text-sm font-bold uppercase tracking-[0.16em] text-[#ccff00]">
               Workout Library
             </p>
 
-            <h1 className="max-w-[610px] font-display text-5xl font-bold uppercase leading-[0.96] text-white lg:text-[58px]">
+            <h1 className="max-w-[610px] font-display text-4xl font-bold uppercase leading-[0.96] text-white sm:text-5xl lg:text-[58px]">
               Train with intent. Log every set.
             </h1>
 
@@ -46,20 +46,20 @@ export default async function Home() {
             </Link>
           </div>
 
-          <div className="flex min-h-[488px] items-center justify-center overflow-hidden">
+          <div className="flex min-h-[260px] items-center justify-center overflow-hidden px-6 pb-8 sm:min-h-[360px] lg:min-h-[488px] lg:px-0 lg:pb-0">
             <img
               src="/banner.png"
               alt="Workout anatomy illustration"
-              className="h-auto max-h-[410px] w-auto max-w-[440px] object-contain"
+              className="h-auto max-h-[300px] w-auto max-w-[340px] object-contain sm:max-h-[360px] sm:max-w-[400px] lg:max-h-[410px] lg:max-w-[440px]"
             />
           </div>
         </div>
       </section>
 
       <section
-        id="library"
-        className="mx-auto max-w-[1448px] px-6 pb-20 sm:px-8"
-      >
+  id="library"
+  className="w-full px-5 pb-16 sm:px-10 sm:pb-20"
+>
         <div className="mb-8">
           <h2 className="font-display text-4xl font-bold uppercase text-white sm:text-5xl">
             The Library

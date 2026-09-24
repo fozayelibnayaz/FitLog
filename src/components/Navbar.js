@@ -14,8 +14,7 @@ export default function Navbar() {
 
   return (
     <header className="border-b border-[#272b31] bg-[#0d0f12]">
-      <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
+<div className="flex min-h-16 w-full items-center justify-between gap-3 px-5 sm:px-10">        <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src="/logo.png"
             alt="FitLog logo"
@@ -34,10 +33,10 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="flex h-7 items-center gap-1">
+        <nav className="flex h-7 items-center gap-0 sm:gap-1">
           <Link
             href="/"
-            className="flex h-7 items-center rounded-full px-4 text-base font-medium"
+            className="flex h-7 items-center rounded-full px-2 text-xs font-medium sm:px-4 sm:text-base"
             style={{
               backgroundColor: workoutActive ? "#1b2a0d" : "transparent",
               color: workoutActive ? "#ccff00" : "#9aa3ad",
@@ -48,7 +47,7 @@ export default function Navbar() {
 
           <Link
             href="/my-plan"
-            className="flex h-7 items-center rounded-full px-4 text-base font-medium"
+            className="flex h-7 items-center rounded-full px-2 text-xs font-medium sm:px-4 sm:text-base"
             style={{
               backgroundColor: planActive ? "#1b2a0d" : "transparent",
               color: planActive ? "#ccff00" : "#9aa3ad",
@@ -61,7 +60,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             href="/my-plan"
-            className="rounded-full px-3 py-1.5 text-xs font-bold"
+            className="whitespace-nowrap rounded-full px-2 py-1.5 text-[11px] font-bold sm:px-3 sm:text-xs"
             style={{
               backgroundColor: "#ccff00",
               color: "#0d0f12",
@@ -72,7 +71,7 @@ export default function Navbar() {
 
           <Link
             href="/my-plan"
-            className="rounded-full border border-[#272b31] px-3 py-1.5 text-xs font-bold text-white"
+            className="whitespace-nowrap rounded-full border border-[#272b31] px-2 py-1.5 text-[11px] font-bold text-white sm:px-3 sm:text-xs"
           >
             Saved {saved.length}
           </Link>
