@@ -1,4 +1,5 @@
 import { Inter, Oswald } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 // next/font downloads these at build time and hands us css variables
@@ -18,7 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
-      <body className="bg-night text-white antialiased">{children}</body>
+      <body className="bg-night text-white antialiased">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
