@@ -58,23 +58,30 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-5">
           <Link
             href="/my-plan"
-            className="flex h-7 items-center rounded-full px-4 py-[6px] text-sm font-semibold leading-4"
-            style={{
-              backgroundColor: "#ccff00",
-              color: "#0d0f12",
-            }}
+            className="flex items-center gap-2 text-sm text-[#d5d8df]"
           >
-            Plan&nbsp; {plan.length}
+            <span>Plan</span>
+
+            <span
+              className="flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-sm font-semibold text-[#0d0f12]"
+              style={{ backgroundColor: "#ccff00" }}
+            >
+              {plan.length}
+            </span>
           </Link>
 
           <Link
             href="/my-plan"
-            className="flex h-7 items-center rounded-full border border-[#272b31] px-4 py-[6px] text-sm font-semibold leading-4 text-white"
+            className="flex items-center gap-2 text-sm text-[#d5d8df]"
           >
-            Saved&nbsp; {saved.length}
+            <span>Saved</span>
+
+            <span className="flex h-7 min-w-7 items-center justify-center rounded-full border border-[#303640] px-2 text-sm text-[#d5d8df]">
+              {saved.length}
+            </span>
           </Link>
         </div>
       </div>
