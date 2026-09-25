@@ -26,8 +26,8 @@ export default async function WorkoutDetails({ params }) {
 
   return (
     <main className="bg-[#0d0f12]">
-      <section className="w-full px-5 pb-20 pt-8 sm:px-10 lg:px-6 lg:pt-14">
-        <div className="mx-auto grid w-full max-w-[1232px] gap-8 lg:grid-cols-2 lg:gap-14">
+      <section className="w-full px-5 pb-20 pt-8 sm:px-10 lg:px-16 lg:pt-14">
+        <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
           <div className="aspect-[588/735] overflow-hidden rounded-2xl bg-[#15181d]">
             <img
               src={workout.image}
@@ -41,7 +41,7 @@ export default async function WorkoutDetails({ params }) {
               {workout.name}
             </h1>
 
-            <p className="mt-5 text-base leading-7 text-[#9aa3ad]">
+            <p className="mt-5 max-w-3xl text-base leading-7 text-[#9aa3ad]">
               {workout.description}
             </p>
 

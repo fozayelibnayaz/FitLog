@@ -64,10 +64,6 @@ export default function MyPlan() {
     0,
   );
 
-  function handleDone(id) {
-    markDone(id);
-  }
-
   function handleRemove(id) {
     if (activeTab === "today") {
       removeFromPlan(id);
@@ -78,17 +74,15 @@ export default function MyPlan() {
 
   return (
     <main className="bg-[#0d0f12]">
-      <section className="w-full px-5 pb-20 pt-10 sm:px-10">
-        <div className="mx-auto max-w-[1200px]">
-          <div>
-            <h1 className="font-display text-5xl font-bold uppercase text-white sm:text-6xl">
-              My Plan
-            </h1>
+      <section className="w-full px-5 pb-20 pt-10 sm:px-10 lg:px-16 lg:pt-14">
+        <div className="w-full">
+          <h1 className="font-display text-5xl font-bold uppercase text-white sm:text-6xl">
+            My Plan
+          </h1>
 
-            <p className="mt-3 text-[#9aa3ad]">
-              Cap of five lifts for today. Finish them, then load more.
-            </p>
-          </div>
+          <p className="mt-3 text-[#9aa3ad]">
+            Cap of five lifts for today. Finish them, then load more.
+          </p>
 
           <div className="mt-10 grid overflow-hidden rounded-2xl border border-[#272b31] bg-[#15181d] sm:grid-cols-3">
             <StatCard label="Exercises" value={plan.length} />
@@ -96,34 +90,36 @@ export default function MyPlan() {
             <StatCard label="Calories" value={totalCalories} />
           </div>
 
-<div className="mt-10 flex flex-col gap-4 border-b border-[#272b31] pb-4 sm:flex-row sm:items-center sm:justify-between"><div className="flex w-fit items-center rounded-xl border border-[#272b31] bg-[#15181d] p-1">
-  <button
-    type="button"
-    onClick={() => setActiveTab("today")}
-    className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
-      activeTab === "today"
-        ? "bg-[#252b35] text-white"
-        : "text-[#9aa3ad] hover:text-white"
-    }`}
-  >
-    Today&apos;s Plan
-  </button>
+          <div className="mt-10 flex flex-col gap-4 border-b border-[#272b31] pb-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex w-fit items-center rounded-xl border border-[#272b31] bg-[#15181d] p-1">
+              <button
+                type="button"
+                onClick={() => setActiveTab("today")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium ${
+                  activeTab === "today"
+                    ? "bg-[#252b35] text-white"
+                    : "text-[#9aa3ad]"
+                }`}
+              >
+                Today&apos;s Plan
+              </button>
 
-  <button
-    type="button"
-    onClick={() => setActiveTab("saved")}
-    className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
-      activeTab === "saved"
-        ? "bg-[#252b35] text-white"
-        : "text-[#9aa3ad] hover:text-white"
-    }`}
-  >
-    Saved
-  </button>
-</div>
+              <button
+                type="button"
+                onClick={() => setActiveTab("saved")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium ${
+                  activeTab === "saved"
+                    ? "bg-[#252b35] text-white"
+                    : "text-[#9aa3ad]"
+                }`}
+              >
+                Saved
+              </button>
+            </div>
 
             <label className="flex items-center gap-3 text-sm text-[#9aa3ad]">
               Sort By
+
               <select
                 value={sortBy}
                 onChange={(event) => setSortBy(event.target.value)}
@@ -150,7 +146,7 @@ export default function MyPlan() {
                     key={workout.id}
                     workout={workout}
                     isSaved={activeTab === "saved"}
-                    onDone={handleDone}
+                    onDone={markDone}
                     onRemove={handleRemove}
                   />
                 ))}
