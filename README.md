@@ -6,9 +6,9 @@ Users can browse workouts from an API, open a dynamic workout details page, add 
 
 ## Live project
 
-Live link: add your deployed link here
+Live link: 
 
-GitHub repository: add your GitHub repository link here
+GitHub repository: https://github.com/fozayelibnayaz/FitLog
 
 ## Technologies used
 
