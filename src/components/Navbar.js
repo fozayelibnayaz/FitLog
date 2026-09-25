@@ -33,29 +33,29 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="flex h-7 items-center gap-0 sm:gap-1">
-          <Link
-            href="/"
-            className="flex h-7 items-center rounded-full px-2 text-xs font-medium sm:px-4 sm:text-base"
-            style={{
-              backgroundColor: workoutActive ? "#1b2a0d" : "transparent",
-              color: workoutActive ? "#ccff00" : "#9aa3ad",
-            }}
-          >
-            Workouts
-          </Link>
+<nav className="flex h-7 items-center gap-1">
+  <Link
+    href="/"
+    className="flex h-7 items-center rounded-full px-4 text-base font-medium"
+    style={{
+      backgroundColor: workoutActive ? "#1b2a0d" : "transparent",
+      color: workoutActive ? "#ccff00" : "#9aa3ad",
+    }}
+  >
+    Workouts
+  </Link>
 
-          <Link
-            href="/my-plan"
-            className="flex h-7 items-center rounded-full px-2 text-xs font-medium sm:px-4 sm:text-base"
-            style={{
-              backgroundColor: planActive ? "#1b2a0d" : "transparent",
-              color: planActive ? "#ccff00" : "#9aa3ad",
-            }}
-          >
-            My Plan
-          </Link>
-        </nav>
+  <Link
+    href="/my-plan"
+    className="flex h-7 items-center rounded-full px-4 text-base font-medium"
+    style={{
+      backgroundColor: planActive ? "#1b2a0d" : "transparent",
+      color: planActive ? "#ccff00" : "#9aa3ad",
+    }}
+  >
+    My Plan
+  </Link>
+</nav>
 
         <div className="flex items-center gap-2">
           <Link

@@ -96,32 +96,31 @@ export default function MyPlan() {
             <StatCard label="Calories" value={totalCalories} />
           </div>
 
-          <div className="mt-10 flex flex-col gap-5 border-b border-[#272b31] pb-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => setActiveTab("today")}
-                className={`rounded-full px-4 py-2 text-sm font-semibold ${
-                  activeTab === "today"
-                    ? "bg-[#1b2a0d] text-[#ccff00]"
-                    : "text-[#9aa3ad]"
-                }`}
-              >
-                Today&apos;s Plan
-              </button>
+<div className="mt-10 flex flex-col gap-4 border-b border-[#272b31] pb-4 sm:flex-row sm:items-center sm:justify-between"><div className="flex w-fit items-center rounded-xl border border-[#272b31] bg-[#15181d] p-1">
+  <button
+    type="button"
+    onClick={() => setActiveTab("today")}
+    className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+      activeTab === "today"
+        ? "bg-[#252b35] text-white"
+        : "text-[#9aa3ad] hover:text-white"
+    }`}
+  >
+    Today&apos;s Plan
+  </button>
 
-              <button
-                type="button"
-                onClick={() => setActiveTab("saved")}
-                className={`rounded-full px-4 py-2 text-sm font-semibold ${
-                  activeTab === "saved"
-                    ? "bg-[#1b2a0d] text-[#ccff00]"
-                    : "text-[#9aa3ad]"
-                }`}
-              >
-                Saved
-              </button>
-            </div>
+  <button
+    type="button"
+    onClick={() => setActiveTab("saved")}
+    className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+      activeTab === "saved"
+        ? "bg-[#252b35] text-white"
+        : "text-[#9aa3ad] hover:text-white"
+    }`}
+  >
+    Saved
+  </button>
+</div>
 
             <label className="flex items-center gap-3 text-sm text-[#9aa3ad]">
               Sort By
