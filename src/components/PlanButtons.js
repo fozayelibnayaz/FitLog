@@ -40,7 +40,7 @@ export default function PlanButtons({ workout }) {
         className="inline-flex items-center gap-2 rounded-lg border border-[#3b424c] px-5 py-3 text-sm font-medium text-white transition hover:border-white disabled:cursor-not-allowed disabled:opacity-50"
       >
         <img
-          src="/vector.png"
+          src="/Vector.png"
           alt=""
           className="h-[18px] w-[18px] object-contain"
         />
