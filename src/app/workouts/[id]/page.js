@@ -57,12 +57,6 @@ export default async function WorkoutDetails({ params }) {
             </div>
 
             <div className="mt-8 overflow-hidden rounded-2xl border border-[#272b31] bg-[#15181d]">
-              <div className="border-b border-[#272b31] px-6 py-4">
-                <h2 className="font-display text-xl font-semibold uppercase text-white">
-                  Key Specs
-                </h2>
-              </div>
-
               <div>
                 <SpecRow label="Equipment" value={workout.equipment} />
                 <SpecRow label="Difficulty" value={workout.difficulty} />
@@ -73,7 +67,7 @@ export default async function WorkoutDetails({ params }) {
                   label="Calories"
                   value={`${workout.caloriesBurned} kcal`}
                 />
-                <SpecRow label="Rating" value={`★ ${workout.rating}`} />
+                <SpecRow label="Rating" value={workout.rating} />
               </div>
             </div>
 

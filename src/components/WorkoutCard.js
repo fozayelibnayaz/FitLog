@@ -19,7 +19,7 @@ export default function WorkoutCard({ workout }) {
           {workout.muscleGroups.map((muscle) => (
             <span
               key={muscle}
-              className="rounded-full bg-[#1b2a0d] px-3 py-1 text-xs font-semibold uppercase text-[#ccff00]"
+              className="rounded-full bg-[#ccff00] px-3 py-1 text-xs font-semibold uppercase text-[#0d0f12]"
             >
               {muscle}
             </span>
@@ -34,10 +34,21 @@ export default function WorkoutCard({ workout }) {
 
         <div className="my-5 border-t border-[#272b31]" />
 
-        <div className="flex items-center justify-between text-xs text-[#9aa3ad]">
-          <span>◷ {workout.duration} min</span>
-          <span>🔥 {workout.caloriesBurned} kcal</span>
-          <span>★ {workout.rating}</span>
+        <div className="flex items-center gap-4 whitespace-nowrap text-sm text-[#9aa3ad]">
+          <span className="flex items-center gap-1">
+            <span aria-hidden="true">◷</span>
+            {workout.duration} min
+          </span>
+
+          <span className="flex items-center gap-1">
+            <span aria-hidden="true">♨</span>
+            {workout.caloriesBurned} kcal
+          </span>
+
+          <span className="flex items-center gap-1">
+            <span aria-hidden="true">☆</span>
+            {workout.rating}
+          </span>
         </div>
       </div>
     </Link>
