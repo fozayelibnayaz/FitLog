@@ -14,66 +14,67 @@ export default function Navbar() {
 
   return (
     <header className="border-b border-[#272b31] bg-[#0d0f12]">
-<div className="flex min-h-16 w-full items-center justify-between gap-3 px-5 sm:px-10">        <Link href="/" className="flex shrink-0 items-center gap-2">
+      <div className="flex min-h-[78px] w-full items-center justify-between gap-4 px-5 sm:px-10">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src="/logo.png"
             alt="FitLog logo"
-            width={24}
-            height={24}
+            width={30}
+            height={30}
             priority
             style={{
-              width: "24px",
-              height: "24px",
+              width: "30px",
+              height: "30px",
               objectFit: "contain",
             }}
           />
 
-          <span className="font-display text-base font-bold uppercase text-white">
+          <span className="font-display text-lg font-bold uppercase text-white">
             FitLog
           </span>
         </Link>
 
-<nav className="flex h-7 items-center gap-1">
-  <Link
-    href="/"
-    className="flex h-7 items-center rounded-full px-4 text-base font-medium"
-    style={{
-      backgroundColor: workoutActive ? "#1b2a0d" : "transparent",
-      color: workoutActive ? "#ccff00" : "#9aa3ad",
-    }}
-  >
-    Workouts
-  </Link>
+        <nav className="flex items-center gap-1">
+          <Link
+            href="/"
+            className="flex h-7 items-center rounded-full px-4 py-[6px] text-sm font-medium leading-4"
+            style={{
+              backgroundColor: workoutActive ? "#1b2a0d" : "transparent",
+              color: workoutActive ? "#ccff00" : "#9aa3ad",
+            }}
+          >
+            Workouts
+          </Link>
 
-  <Link
-    href="/my-plan"
-    className="flex h-7 items-center rounded-full px-4 text-base font-medium"
-    style={{
-      backgroundColor: planActive ? "#1b2a0d" : "transparent",
-      color: planActive ? "#ccff00" : "#9aa3ad",
-    }}
-  >
-    My Plan
-  </Link>
-</nav>
+          <Link
+            href="/my-plan"
+            className="flex h-7 items-center rounded-full px-4 py-[6px] text-sm font-medium leading-4"
+            style={{
+              backgroundColor: planActive ? "#1b2a0d" : "transparent",
+              color: planActive ? "#ccff00" : "#9aa3ad",
+            }}
+          >
+            My Plan
+          </Link>
+        </nav>
 
         <div className="flex items-center gap-2">
           <Link
             href="/my-plan"
-            className="whitespace-nowrap rounded-full px-2 py-1.5 text-[11px] font-bold sm:px-3 sm:text-xs"
+            className="flex h-7 items-center rounded-full px-4 py-[6px] text-sm font-semibold leading-4"
             style={{
               backgroundColor: "#ccff00",
               color: "#0d0f12",
             }}
           >
-            Plan {plan.length}
+            Plan&nbsp; {plan.length}
           </Link>
 
           <Link
             href="/my-plan"
-            className="whitespace-nowrap rounded-full border border-[#272b31] px-2 py-1.5 text-[11px] font-bold text-white sm:px-3 sm:text-xs"
+            className="flex h-7 items-center rounded-full border border-[#272b31] px-4 py-[6px] text-sm font-semibold leading-4 text-white"
           >
-            Saved {saved.length}
+            Saved&nbsp; {saved.length}
           </Link>
         </div>
       </div>

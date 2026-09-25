@@ -164,13 +164,19 @@ export default function MyPlan() {
 }
 
 function StatCard({ label, value }) {
+  const isExercises = label === "Exercises";
+
   return (
     <div className="border-b border-[#272b31] p-6 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
       <p className="text-xs font-semibold uppercase tracking-wide text-[#9aa3ad]">
         {label}
       </p>
 
-      <p className="mt-2 font-display text-4xl font-bold text-[#ccff00]">
+      <p
+        className={`mt-2 font-display text-4xl font-bold ${
+          isExercises ? "text-[#ccff00]" : "text-white"
+        }`}
+      >
         {value}
       </p>
     </div>
