@@ -1,0 +1,118 @@
+import { notFound } from "next/navigation";
+import PlanButtons from "@/components/PlanButtons";
+
+async function getWorkout(id) {
+  const response = await fetch(
+    `https://api.abcz.workers.dev/api/fitlog/${id}`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
+}
+
+export default async function WorkoutDetails({ params }) {
+  const { id } = await params;
+  const workout = await getWorkout(id);
+
+  if (!workout) {
+    notFound();
+  }
+
+  return (
+    <main className="bg-[#0d0f12]">
+      <section className="w-full px-5 pb-20 pt-8 sm:px-10">
+        <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="overflow-hidden rounded-2xl border border-[#272b31] bg-[#15181d]">
+            <img
+              src={workout.image}
+              alt={workout.name}
+              className="h-full min-h-[420px] w-full object-cover"
+            />
+          </div>
+
+          <div className="py-2">
+            <div className="mb-5 flex flex-wrap gap-2">
+              {workout.muscleGroups.map((muscle) => (
+                <span
+                  key={muscle}
+                  className="rounded-full bg-[#1b2a0d] px-3 py-1 text-xs font-semibold uppercase text-[#ccff00]"
+                >
+                  {muscle}
+                </span>
+              ))}
+            </div>
+
+            <h1 className="font-display text-5xl font-bold uppercase leading-none text-white sm:text-6xl">
+              {workout.name}
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-7 text-[#9aa3ad]">
+              {workout.description}
+            </p>
+
+            <div className="mt-8 overflow-hidden rounded-2xl border border-[#272b31] bg-[#15181d]">
+              <div className="border-b border-[#272b31] px-5 py-4">
+                <h2 className="font-display text-xl font-semibold uppercase">
+                  Key Specs
+                </h2>
+              </div>
+
+              <div className="grid sm:grid-cols-2">
+                <SpecRow label="Equipment" value={workout.equipment} />
+                <SpecRow label="Difficulty" value={workout.difficulty} />
+                <SpecRow label="Sets" value={workout.sets} />
+                <SpecRow label="Reps" value={workout.reps} />
+                <SpecRow label="Duration" value={`${workout.duration} min`} />
+                <SpecRow
+                  label="Calories"
+                  value={`${workout.caloriesBurned} kcal`}
+                />
+                <SpecRow label="Rating" value={`★ ${workout.rating}`} />
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <h2 className="font-display text-2xl font-semibold uppercase">
+                Instructions
+              </h2>
+
+              <ol className="mt-4 space-y-4">
+                {workout.instructions.map((instruction, index) => (
+                  <li
+                    key={instruction}
+                    className="flex gap-4 border-b border-[#272b31] pb-4 text-sm leading-6 text-[#9aa3ad]"
+                  >
+                    <span className="font-display text-xl font-semibold text-[#ccff00]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span>{instruction}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <PlanButtons workout={workout} />
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function SpecRow({ label, value }) {
+  return (
+    <div className="flex items-center justify-between gap-4 border-b border-[#272b31] px-5 py-4 text-sm">
+      <span className="text-xs font-semibold uppercase tracking-wide text-[#9aa3ad]">
+        {label}
+      </span>
+
+      <span className="text-right font-medium text-white">{value}</span>
+    </div>
+  );
+}
