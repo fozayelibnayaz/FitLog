@@ -40,9 +40,6 @@ export default async function Home() {
               style={{ backgroundColor: "#ccff00" }}
             >
               Browse workouts
-              <span aria-hidden="true" className="text-lg leading-none">
-                ↓
-              </span>
             </Link>
           </div>
 
