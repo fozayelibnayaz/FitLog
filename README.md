@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FitLog
 
-## Getting Started
+FitLog is a responsive workout library and workout planning website built with Next.js.
 
-First, run the development server:
+Users can browse workouts from an API, open a dynamic workout details page, add exercises to today's plan, save exercises for later, and manage everything from the My Plan page.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Live link: add your deployed link here
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+GitHub repository: add your GitHub repository link here
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technologies used
 
-## Learn More
+- Next.js
+- React
+- JavaScript
+- App Router
+- Tailwind CSS
+- DaisyUI
+- Context API
+- useState
+- useEffect
+- Dynamic routing
+- Fetch API
+- localStorage
+- react-toastify
 
-To learn more about Next.js, take a look at the following resources:
+## Main features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Responsive workout library with API data
+- Dynamic workout details pages
+- Add workouts to today's plan
+- Save workouts for later
+- Maximum five workouts in today's plan
+- Plan and Saved counters in the navbar
+- My Plan page with Today's Plan and Saved tabs
+- Sort workouts by duration, calories, or rating
+- Mark a workout as done
+- Remove workouts from the plan
+- Data persistence with localStorage
+- Loading state while workout data is fetched
+- Toast notifications for plan actions
+- Custom 404 page for invalid routes
+- Responsive layout for mobile, tablet, and desktop
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API
 
-## Deploy on Vercel
+FitLog uses the following API:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+https://api.abcz.workers.dev/api/fitlog
