@@ -26,9 +26,10 @@ export default async function WorkoutDetails({ params }) {
 
   return (
     <main className="bg-[#0d0f12]">
-      <section className="w-full px-5 pb-20 pt-8 sm:px-10 lg:px-16 lg:pt-14">
-        <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
-          <div className="aspect-[588/735] overflow-hidden rounded-2xl bg-[#15181d]">
+      <section className="w-full px-4 pb-16 pt-6 sm:px-6 sm:pb-20 sm:pt-8 lg:px-8 lg:pt-10">
+        <div className="grid w-full gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10 xl:gap-14">
+          {/* FIX: smaller on mobile */}
+          <div className="aspect-[4/3] max-h-[300px] overflow-hidden rounded-2xl bg-[#15181d] sm:max-h-[420px] lg:max-h-none lg:aspect-[588/735]">
             <img
               src={workout.image}
               alt={workout.name}
@@ -36,27 +37,27 @@ export default async function WorkoutDetails({ params }) {
             />
           </div>
 
-          <div className="flex flex-col">
-            <h1 className="font-display text-5xl font-bold uppercase leading-[0.95] text-white sm:text-6xl">
+          <div className="flex min-w-0 flex-col">
+            <h1 className="font-display text-3xl font-bold uppercase leading-[0.95] text-white sm:text-4xl lg:text-5xl">
               {workout.name}
             </h1>
 
-            <p className="mt-5 max-w-3xl text-base leading-7 text-[#9aa3ad]">
+            <p className="mt-3 max-w-3xl text-[13px] leading-6 text-[#9aa3ad] sm:text-sm sm:leading-7">
               {workout.description}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {workout.muscleGroups.map((muscle) => (
                 <span
                   key={muscle}
-                  className="rounded-full bg-[#ccff00] px-4 py-1.5 text-sm font-medium text-[#0d0f12]"
+                  className="rounded-full bg-[#ccff00] px-3 py-1 text-xs font-medium text-[#0d0f12] sm:px-4 sm:py-1.5 sm:text-sm"
                 >
                   {muscle}
                 </span>
               ))}
             </div>
 
-            <div className="mt-8 overflow-hidden rounded-2xl border border-[#272b31] bg-[#15181d]">
+            <div className="mt-6 overflow-hidden rounded-2xl border border-[#272b31] bg-[#15181d] sm:mt-8">
               <div>
                 <SpecRow label="Equipment" value={workout.equipment} />
                 <SpecRow label="Difficulty" value={workout.difficulty} />
@@ -71,14 +72,14 @@ export default async function WorkoutDetails({ params }) {
               </div>
             </div>
 
-            <div className="mt-8">
-              <h2 className="font-display text-2xl font-semibold uppercase text-white">
+            <div className="mt-6 sm:mt-8">
+              <h2 className="font-display text-xl font-semibold uppercase text-white sm:text-2xl">
                 Instructions
               </h2>
 
-              <ol className="mt-5 list-decimal space-y-4 pl-5 text-base leading-6 text-[#9aa3ad] marker:text-[#9aa3ad] marker:text-base">
+              <ol className="mt-4 list-decimal space-y-3 pl-5 text-[13px] leading-6 text-[#9aa3ad] sm:text-sm">
                 {workout.instructions.map((instruction) => (
-                  <li key={instruction} className="pl-2">
+                  <li key={instruction} className="pl-1 sm:pl-2">
                     {instruction}
                   </li>
                 ))}
@@ -95,12 +96,11 @@ export default async function WorkoutDetails({ params }) {
 
 function SpecRow({ label, value }) {
   return (
-    <div className="flex items-center justify-between gap-6 border-b border-[#272b31] px-6 py-5 last:border-b-0">
-      <span className="text-sm font-semibold uppercase tracking-wide text-[#9aa3ad]">
+    <div className="flex items-center justify-between gap-4 border-b border-[#272b31] px-4 py-3.5 last:border-b-0 sm:px-5 sm:py-4 lg:px-6 lg:py-5">
+      <span className="text-[11px] font-semibold uppercase tracking-wide text-[#9aa3ad] sm:text-xs">
         {label}
       </span>
-
-      <span className="text-right text-base text-white">{value}</span>
+      <span className="max-w-[60%] text-right text-sm text-white sm:text-[15px] lg:text-base">{value}</span>
     </div>
   );
 }

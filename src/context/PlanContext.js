@@ -5,90 +5,66 @@ import { toast } from "react-toastify";
 
 const PlanContext = createContext(null);
 
-const MAX_PLAN = 5; // cap of five, dont be greedy
-
-function readStore(key) {
-  if (typeof window === "undefined") return [];
-  try {
-    return JSON.parse(window.localStorage.getItem(key)) || [];
-  } catch {
-    return [];
-  }
-}
-
 export function PlanProvider({ children }) {
-  const [plan, setPlan] = useState([]); // ids in today's plan
-  const [saved, setSaved] = useState([]); // ids saved for later
-  const [hydrated, setHydrated] = useState(false);
+  const [plan, setPlan] = useState([]);
+  const [saved, setSaved] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setPlan(readStore("fitlog-plan"));
-    setSaved(readStore("fitlog-saved"));
-    setHydrated(true);
+    try {
+      const p = localStorage.getItem("fitlog-plan");
+      const s = localStorage.getItem("fitlog-saved");
+      if (p) setPlan(JSON.parse(p));
+      if (s) setSaved(JSON.parse(s));
+    } catch (e) {
+      console.log("load fail", e);
+    } finally {
+      setIsLoaded(true);
+    }
   }, []);
 
   useEffect(() => {
-    if (!hydrated) return;
-    window.localStorage.setItem("fitlog-plan", JSON.stringify(plan));
-  }, [plan, hydrated]);
+    if (!isLoaded) return;
+    localStorage.setItem("fitlog-plan", JSON.stringify(plan));
+    localStorage.setItem("fitlog-saved", JSON.stringify(saved));
+  }, [plan, saved, isLoaded]);
 
-  useEffect(() => {
-    if (!hydrated) return;
-    window.localStorage.setItem("fitlog-saved", JSON.stringify(saved));
-  }, [saved, hydrated]);
-
-  function addToPlan(workout) {
-    if (plan.includes(workout.id)) {
-      toast.warn("already in today's plan.");
-      return;
-    }
-    if (plan.length >= MAX_PLAN) {
-      toast.warn("today's plan is full (5 lifts). finish some first.");
-      return;
-    }
-    setPlan([...plan, workout.id]);
-    toast.success(`${workout.name} added to today's plan.`);
-  }
-
-  function saveForLater(workout) {
-    if (saved.includes(workout.id)) {
-      toast.warn("already saved for later.");
-      return;
-    }
-    setSaved([...saved, workout.id]);
-    toast.success(`${workout.name} saved for later.`);
-  }
-
-  function removeFromPlan(id) {
-    setPlan(plan.filter((pid) => pid !== id));
-    toast.info("removed from today's plan.");
-  }
-
-  function removeFromSaved(id) {
-    setSaved(saved.filter((sid) => sid !== id));
-    toast.info("removed from saved.");
-  }
-
-  function markDone(id) {
-    setPlan(plan.filter((pid) => pid !== id));
-    toast.success("nice. logged as done.");
-  }
-
-  const value = {
-    plan,
-    saved,
-    addToPlan,
-    saveForLater,
-    removeFromPlan,
-    removeFromSaved,
-    markDone,
-    inPlan: (id) => plan.includes(id),
-    inSaved: (id) => saved.includes(id),
+  const addToPlan = (w) => {
+    if (plan.find((x) => x.id === w.id)) return toast.info("already in plan");
+    if (plan.length >= 5) return toast.error("plan full max 5");
+    setPlan([...plan, w]);
+    toast.success("added to plan");
+  };
+  const removeFromPlan = (id) => {
+    setPlan(plan.filter((w) => w.id !== id));
+    toast.success("removed");
+  };
+  const addToSaved = (w) => {
+    if (saved.find((x) => x.id === w.id)) return toast.info("already saved");
+    setSaved([...saved, w]);
+    toast.success("saved");
+  };
+  const removeFromSaved = (id) => {
+    setSaved(saved.filter((w) => w.id !== id));
+    toast.success("removed");
+  };
+  const markDone = (id) => {
+    setPlan(plan.filter((w) => w.id !== id));
+    toast.success("marked as done");
   };
 
-  return <PlanContext.Provider value={value}>{children}</PlanContext.Provider>;
+  const inPlan = (id) => plan.some((w) => w.id === id);
+  const inSaved = (id) => saved.some((w) => w.id === id);
+
+  return (
+    <PlanContext.Provider value={{ plan, saved, isLoaded, addToPlan, removeFromPlan, addToSaved, removeFromSaved, markDone, inPlan, inSaved, saveForLater: addToSaved }}>
+      {children}
+    </PlanContext.Provider>
+  );
 }
 
 export function usePlan() {
-  return useContext(PlanContext);
+  const c = useContext(PlanContext);
+  if (!c) throw new Error("usePlan inside provider");
+  return c;
 }
